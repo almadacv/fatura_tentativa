@@ -14,6 +14,7 @@ public class Login extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_login);
 
+        setTitle("Login");
 
         Button button_login = findViewById(R.id.login);
 
