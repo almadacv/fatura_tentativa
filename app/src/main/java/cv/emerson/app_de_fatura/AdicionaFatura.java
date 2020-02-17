@@ -3,18 +3,12 @@ package cv.emerson.app_de_fatura;
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
-import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuInflater;
 import android.view.MenuItem;
-import android.view.View;
-import android.view.contentcapture.ContentCaptureCondition;
-import android.widget.Button;
 import android.widget.EditText;
-import android.widget.TableLayout;
-import android.widget.TableRow;
 import android.widget.Toast;
 
 public class AdicionaFatura extends AppCompatActivity {
@@ -27,8 +21,6 @@ public class AdicionaFatura extends AppCompatActivity {
     private EditText iva_edit_main;
     private EditText qtd_edit_main;
     private EditText preco_edit_main;
-    private Button adiciona_linha;
-    private TableLayout tableLayout;
 
     @Override
 
@@ -40,44 +32,9 @@ public class AdicionaFatura extends AppCompatActivity {
         iva_edit_main = findViewById(R.id.add_Iva);
         qtd_edit_main = findViewById(R.id.add_Qtd);
         preco_edit_main = findViewById(R.id.add_Preco);
-        adiciona_linha = findViewById(R.id.adicona_linha);
-        tableLayout = findViewById(R.id.table_layout);
 
         getSupportActionBar().setHomeAsUpIndicator(R.drawable.ic_close);
         setTitle("Adicionar Fatura");
-
-
-        adiciona_linha.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Context context = getApplicationContext();
-                // Create a new table row.
-                TableRow tableRowa = new TableRow(context);
-
-                // Set new table row layout parameters.
-                TableRow.LayoutParams layoutParams = new TableRow.LayoutParams(TableRow.LayoutParams.WRAP_CONTENT);
-                tableRowa.setLayoutParams(layoutParams);
-
-                // Add a TextView in the first column.
-                EditText produto = new EditText(context);
-                tableRowa.addView(produto, 0);
-
-                // Add a button in the second column
-                EditText button = new EditText(context);
-                tableRowa.addView(button, 1);
-
-                // Add a checkbox in the third column.
-                EditText checkBox = new EditText(context);
-                tableRowa.addView(checkBox, 2);
-
-                EditText Preco = new EditText(context);
-                tableRowa.addView(Preco, 2);
-                tableLayout.addView(tableRowa);
-                tableRowa.requestFocus();
-            }
-
-            //
-        });
     }
 
     @Override
@@ -110,12 +67,12 @@ public class AdicionaFatura extends AppCompatActivity {
             return;
         }
         Intent data = new Intent();
-        data.putExtra(EXTRA_NOME_PRO, nome_do_produto_add);
-        data.putExtra(EXTRA_IVA_PRO, iva_add);
-        data.putExtra(EXTRA_QTD_PRO, qtd_add);
-        data.putExtra(EXTRA_PRECO_PRO, preco_add);
+        data.putExtra(EXTRA_NOME_PRO,nome_do_produto_add);
+        data.putExtra(EXTRA_IVA_PRO,iva_add);
+        data.putExtra(EXTRA_QTD_PRO,qtd_add);
+        data.putExtra(EXTRA_PRECO_PRO,preco_add);
 
-        setResult(RESULT_OK, data);
+        setResult(RESULT_OK,data);
         finish();
     }
 

@@ -33,6 +33,7 @@ public class MainActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+        setTitle("Fatura App");
 
         FloatingActionButton buttonadicionafatura = findViewById(R.id.adicona_main_button);
         buttonadicionafatura.setOnClickListener(new View.OnClickListener() {
@@ -104,13 +105,13 @@ public class MainActivity extends AppCompatActivity {
             Float iva_do_produto = Float.parseFloat(data.getStringExtra(AdicionaFatura.EXTRA_IVA_PRO));
             int qtd_do_produto = Integer.parseInt(data.getStringExtra(AdicionaFatura.EXTRA_QTD_PRO));
             Float preco_do_produto = Float.parseFloat(data.getStringExtra(AdicionaFatura.EXTRA_PRECO_PRO));
-            if (iva_do_produto == 0) {
-                iva_do_produto = (float) 1;
-                Float precototal_do_produto = (preco_do_produto * iva_do_produto) * qtd_do_produto;
-                Produto produto = new Produto(nome_do_produto, iva_do_produto, qtd_do_produto, precototal_do_produto, preco_do_produto);
-                produtoViewModel.insert(produto);
+            if (iva_do_produto==0){
+                iva_do_produto=(float) 1;
             }
+            Float precototal_do_produto = (preco_do_produto * iva_do_produto) * qtd_do_produto;
 
+            Produto produto = new Produto(nome_do_produto, iva_do_produto, qtd_do_produto, precototal_do_produto, preco_do_produto);
+            produtoViewModel.insert(produto);
 
             Toast.makeText(this, "Informaçoes Guardadas com Sucesso", Toast.LENGTH_LONG).show();
         } else {
