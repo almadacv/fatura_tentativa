@@ -1,0 +1,48 @@
+apply plugin: 'com.android.application'
+
+android {
+    compileSdkVersion 29
+    buildToolsVersion "29.0.2"
+    defaultConfig {
+        applicationId "cv.emerson.app_de_fatura"
+        minSdkVersion 20
+        targetSdkVersion 29
+        versionCode 1
+        versionName "1.0"
+        multiDexEnabled true
+        testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
+    }
+    buildTypes {
+        release {
+            minifyEnabled false
+            proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
+        }
+    }
+}
+
+dependencies {
+    implementation fileTree(dir: 'libs', include: ['*.jar'])
+    implementation 'androidx.appcompat:appcompat:1.1.0'
+    implementation 'androidx.constraintlayout:constraintlayout:1.1.3'
+    testImplementation 'junit:junit:4.12'
+    androidTestImplementation 'androidx.test.ext:junit:1.1.1'
+    androidTestImplementation 'androidx.test.espresso:espresso-core:3.1.1'
+
+    implementation 'com.basgeekball:awesome-validation:4.2'
+    implementation 'org.jboss.aerogear:aerogear-android-authz:3.1.1'
+    implementation 'com.android.support:multidex:1.0.3'
+    implementation 'com.android.support:recyclerview-v7:28.0.0'
+    implementation 'androidx.room:room-runtime:2.2.3'
+    implementation 'com.android.support:support-annotations:28.0.0'
+    implementation 'com.android.support:cardview-v7:28.0.0'
+    implementation 'com.android.support:design:28.0.0'
+
+// Room components
+    implementation "android.arch.persistence.room:runtime:1.1.1"
+    annotationProcessor "android.arch.persistence.room:compiler:1.1.1"
+    androidTestImplementation "android.arch.persistence.room:testing:1.1.1"
+
+// Lifecycle components
+    implementation 'androidx.lifecycle:lifecycle-extensions:2.2.0'
+    annotationProcessor "android.arch.lifecycle:compiler:2.2.0"
+}
